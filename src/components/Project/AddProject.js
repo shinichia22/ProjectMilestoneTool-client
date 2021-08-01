@@ -14,9 +14,16 @@ export class AddProject extends Component {
         projectIdentifier: "",
         description: "",
         start_date: "",
-        end_date: ""
+        end_date: "",
+        errors: {}
     }
     }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.errors) {
+          this.setState({ errors: nextProps.errors });
+        }
+      }
 
     onChange=(e)=>{
         this.setState({[e.target.name]: e.target.value })
@@ -35,6 +42,7 @@ export class AddProject extends Component {
     }
 
     render() {
+        const { errors } = this.state;
         return (
             <div className="project">
                 <div className="container">
@@ -49,12 +57,14 @@ export class AddProject extends Component {
                                     value={this.state.projectName}
                                     onChange={this.onChange}/>
                                 </div>
+                                <p>{errors.projectName}</p>
                                 <div className="form-group">
                                     <input type="text" className="form-control form-control-lg" placeholder="Unique Project ID"
                                     name="projectIdentifier"
                                     value={this.state.projectIdentifier}
                                     onChange={this.onChange}/>
                                 </div>
+                                <p>{errors.projectIdentifier}</p>
                                 <div className="form-group">
                                     <textarea className="form-control form-control-lg" placeholder="Project Description"
                                     name="description" 
@@ -62,6 +72,7 @@ export class AddProject extends Component {
                                     onChange={this.onChange}
                                     ></textarea>
                                 </div>
+                                <p>{errors.description}</p>
                                 <h6>Start Date</h6>
                                 <div className="form-group">
                                     <input type="date" className="form-control form-control-lg" name="start_date"
@@ -88,7 +99,12 @@ export class AddProject extends Component {
 }
 
 AddProject.propTypes ={
-    createProject: PropTypes.func.isRequired
+    createProject: PropTypes.func.isRequired,
+    errors: PropTypes.object.isRequired,
 }
 
-export default connect (null, {createProject}) (AddProject);
+const mapStateToProps = state => ({
+    errors: state.errors
+  });
+
+export default connect (mapStateToProps, {createProject}) (AddProject);

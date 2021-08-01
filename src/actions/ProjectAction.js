@@ -9,7 +9,7 @@ export const createProject = (project, history) => async dispatch => {
       dispatch({
         type: GET_ERRORS,
         payload: err.response.data
-      });
+    });
     }
   };
 
