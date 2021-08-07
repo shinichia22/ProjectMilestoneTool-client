@@ -6,5 +6,5 @@ export const DELETE_PROJECT = "DELETE_PROJECT";
 //Types for Backlog
 export const GET_BACKLOG = "Get_BACKLOG";
 export const GET_PROJECT_TASK = "GET_PROJECT_TASK";
-export const DELETE_PROJECTASK = "DELETE_PROJECT_TASK";
+export const DELETE_PROJECT_TASK = "DELETE_PROJECT_TASK";
 

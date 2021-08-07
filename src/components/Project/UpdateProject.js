@@ -22,7 +22,7 @@ class UpdateProject extends Component {
     }
 
 
-    // this will get the project details from the props after det project axios from reducer and destructing allattibutes and settng that state
+    // this will get the project details from the props after get project axios from reducer and destructing allattibutes and setting that state
     componentWillReceiveProps(nextProps){
         if(nextProps.errors){
             this.setState({errors:nextProps.errors})
