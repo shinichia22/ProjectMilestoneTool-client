@@ -17,6 +17,12 @@ class Register extends Component {
             errors: {}
         }; 
     }
+
+    componentDidMount() {
+        if(this.props.security.validToken){
+            this.props.history.push("/dashboard");
+        }
+    }
     
     onSubmit = (e) => {
         e.preventDefault();
@@ -30,6 +36,7 @@ class Register extends Component {
 
         this.props.createNewUser(newUser, this.props.history);
     }
+
 
     componentWillReceiveProps(nextProps) {
         if(nextProps.errors){
@@ -119,11 +126,13 @@ class Register extends Component {
 
 Register.propTypes = {
     createNewUser: PropTypes.func.isRequired,
-    errors: PropTypes.object.isRequired
+    errors: PropTypes.object.isRequired,
+    security: PropTypes.object.isRequired
 };
 
 const mapStateToProps = (state) => ({
     errors: state.errors,
+    security: state.security
 })
 
 export default connect(mapStateToProps, {createNewUser}) (Register);

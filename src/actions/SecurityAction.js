@@ -45,6 +45,13 @@ export const login = Loginrequest => async dispatch => {
             payload:err.response.data
         })
     }
+}
 
-    
+export const logout = () => dispatch => {
+    localStorage.removeItem("jwtToken") // remove token from localstorage
+    setJWTToken(false) // to remove the token from header 
+    dispatch({
+        type: "SET_CURRENT_USER",
+        payload: {}
+    })
 }
