@@ -71,7 +71,7 @@ class Header extends Component {
       <nav className="navbar navbar-expand-sm navbar-dark bg-primary mb-4">
         <div className="container">
           <Link className="navbar-brand" to="/">
-            Personal Project Management Tool
+            ProjectMilestone Management Tool
           </Link>
           <button
             className="navbar-toggler"
